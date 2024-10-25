@@ -29,7 +29,6 @@
 		B477C9F82CCBA83B00232EEA /* Exceptions for "Shared-Issue-2024" folder in "Shared-Issue-2024Tests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Domain.swift,
 				Features.swift,
 			);
 			target = B477C9CC2CCBA12400232EEA /* Shared-Issue-2024Tests */;

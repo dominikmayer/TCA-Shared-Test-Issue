@@ -8,22 +8,27 @@
 import ComposableArchitecture
 import Foundation
 
+// MARK: - Domain
+struct Journal: Equatable {}
+
+struct Entry: Equatable {
+    var url: URL
+}
+
+// MARK: - Shared
 extension PersistenceReaderKey where Self == PersistenceKeyDefault<InMemoryKey<Journal?>> {
     static var journal: Self {
         return PersistenceKeyDefault(.inMemory("journal"), nil)
     }
 }
 
+// MARK: - Destination Features
 @Reducer
-struct EntryFeature: Sendable {
+struct EntryFeature {
     
     @ObservableState
-    struct State: Equatable, Identifiable, Sendable {
-        var id: URL {
-            entry.id
-        }
-        
-        var entry: Entry
+    struct State: Equatable {
+        var url: URL
         @SharedReader(.journal) var journal
     }
 }
@@ -37,6 +42,7 @@ struct DayFeature {
     }
 }
 
+// MARK: - Parent Feature
 @Reducer
 struct CalendarFeature {
     
@@ -64,13 +70,7 @@ struct CalendarFeature {
             switch action {
                 
             case .loadEntry(let url):
-                guard let journal = Shared(state.$journal),
-                      let entry = Shared(journal[url])
-                else {
-                    return .none
-                }
-
-                let updatedEntryState = EntryFeature.State(entry: entry.wrappedValue)
+                let updatedEntryState = EntryFeature.State(url: url)
                 state.destination = .entry(updatedEntryState)
                 return .none
                 

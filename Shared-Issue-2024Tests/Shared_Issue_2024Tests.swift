@@ -13,7 +13,7 @@ import Testing
 @MainActor
 struct Test_CalendarFeature {
 
-    let journal = Journal(entries: [.entry1, .entry2, .entry3])
+    let journal = Journal()
         
     @Test
     func settingSharedVariableNil() async {
@@ -22,8 +22,8 @@ struct Test_CalendarFeature {
         // We never use this store but if we remove it, the issue doesn't appear
         let _ = TestStore(
             initialState: .init(
-                // This has to be the same entry that will be set by the other test. You can try to change it to .entry2Empty and everything passes
-                destination: .day(.init(entries: [.entry1Empty]))
+                // This has to be the same entry that will be set by the other test. You can try to change it to .entryFeature2 and everything passes
+                destination: .day(.init(entries: [.entryFeature1]))
             )
         ) {
             CalendarFeature()
@@ -50,7 +50,7 @@ struct Test_CalendarFeature {
         }
         
         await store.send(.loadEntry(.entry1)) {
-            $0.destination = .entry(.entry1Empty)
+            $0.destination = .entry(.entryFeature1)
         }
     }
 }
@@ -58,7 +58,6 @@ struct Test_CalendarFeature {
 extension URL {
     static let entry1 = URL(fileURLWithPath: "/some/path/")
     static let entry2 = URL(fileURLWithPath: "/some/other/path/")
-    static let entry3 = URL(fileURLWithPath: "/some/third/path/")
 }
 
 extension Entry {
@@ -68,16 +67,13 @@ extension Entry {
     static let entry2 = Entry(
         url: .entry2
     )
-    static let entry3 = Entry(
-        url: .entry3
-    )
 }
 
 extension EntryFeature.State {
-    static let entry1Empty = EntryFeature.State(
-        entry: .entry1
+    static let entryFeature1 = EntryFeature.State(
+        url: .entry1
     )
-    static let entry2Empty = EntryFeature.State(
-        entry: .entry2
+    static let entryFeature2 = EntryFeature.State(
+        url: .entry2
     )
 }
