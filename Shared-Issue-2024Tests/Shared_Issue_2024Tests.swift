@@ -22,8 +22,8 @@ struct Test_CalendarFeature {
         // We never use this store but if we remove it, the issue doesn't appear
         let _ = TestStore(
             initialState: .init(
-                destination: .day(.init(entries: [.entry1Empty]))
                 // This has to be the same entry that will be set by the other test. You can try to change it to .entry2Empty and everything passes
+                destination: .day(.init(entries: [.entry1Empty]))
             )
         ) {
             CalendarFeature()
@@ -75,9 +75,9 @@ extension Entry {
 
 extension EntryFeature.State {
     static let entry1Empty = EntryFeature.State(
-        entry: Shared(.entry1)
+        entry: .entry1
     )
     static let entry2Empty = EntryFeature.State(
-        entry: Shared(.entry2)
+        entry: .entry2
     )
 }

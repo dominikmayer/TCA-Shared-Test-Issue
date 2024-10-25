@@ -23,7 +23,7 @@ struct EntryFeature: Sendable {
             entry.id
         }
         
-        @Shared var entry: Entry
+        var entry: Entry
         @SharedReader(.journal) var journal
     }
 }
@@ -70,7 +70,7 @@ struct CalendarFeature {
                     return .none
                 }
 
-                let updatedEntryState = EntryFeature.State(entry: entry)
+                let updatedEntryState = EntryFeature.State(entry: entry.wrappedValue)
                 state.destination = .entry(updatedEntryState)
                 return .none
                 
