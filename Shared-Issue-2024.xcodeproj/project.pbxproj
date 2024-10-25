@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B477C9F22CCBA47E00232EEA /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = B477C9F12CCBA47E00232EEA /* ComposableArchitecture */; };
+		B477C9FC2CCBB07500232EEA /* README in Resources */ = {isa = PBXBuildFile; fileRef = B477C9FA2CCBB07100232EEA /* README */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		B477C9BC2CCBA12300232EEA /* Shared-Issue-2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shared-Issue-2024.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B477C9CD2CCBA12400232EEA /* Shared-Issue-2024Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shared-Issue-2024Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B477C9FA2CCBB07100232EEA /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -73,6 +75,7 @@
 		B477C9B32CCBA12300232EEA = {
 			isa = PBXGroup;
 			children = (
+				B477C9FA2CCBB07100232EEA /* README */,
 				B477C9BE2CCBA12300232EEA /* Shared-Issue-2024 */,
 				B477C9D02CCBA12400232EEA /* Shared-Issue-2024Tests */,
 				B477C9EE2CCBA46300232EEA /* Frameworks */,
@@ -192,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B477C9FC2CCBB07500232EEA /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

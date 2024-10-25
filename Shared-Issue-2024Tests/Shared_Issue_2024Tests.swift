@@ -9,7 +9,7 @@ import ComposableArchitecture
 import Foundation
 import Testing
 
-@Suite("CalendarFeature", .serialized)
+@Suite(.serialized)
 @MainActor
 struct Test_CalendarFeature {
 
@@ -17,8 +17,6 @@ struct Test_CalendarFeature {
         
     @Test
     func settingSharedVariableNil() async {
-        @Shared(.journal) var sharedJournal
-        
         // We never use this store but if we remove it, the issue doesn't appear
         let _ = TestStore(
             initialState: .init(
@@ -29,6 +27,7 @@ struct Test_CalendarFeature {
             CalendarFeature()
         }
 
+        @Shared(.journal) var sharedJournal
         $sharedJournal.withLock {
             $0 = nil
         }
@@ -55,6 +54,7 @@ struct Test_CalendarFeature {
     }
 }
 
+// MARK: - Test Items
 extension URL {
     static let entry1 = URL(fileURLWithPath: "/some/path/")
     static let entry2 = URL(fileURLWithPath: "/some/other/path/")
