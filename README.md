@@ -1,16 +1,8 @@
-I have the following two structs:
+I have the following struct, which is shared in memory:
 
 ```Swift
 struct Journal: Equatable {}
 
-struct Entry: Equatable {
-    var url: URL
-}
-```
-
-The journal is shared in memory:
-
-```Swift
 extension PersistenceReaderKey where Self == PersistenceKeyDefault<InMemoryKey<Journal?>> {
     static var journal: Self {
         return PersistenceKeyDefault(.inMemory("journal"), nil)

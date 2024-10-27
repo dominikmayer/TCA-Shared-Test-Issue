@@ -60,15 +60,6 @@ extension URL {
     static let entry2 = URL(fileURLWithPath: "/some/other/path/")
 }
 
-extension Entry {
-    static let entry1 = Entry(
-        url: .entry1
-    )
-    static let entry2 = Entry(
-        url: .entry2
-    )
-}
-
 extension EntryFeature.State {
     static let entryFeature1 = EntryFeature.State(
         url: .entry1

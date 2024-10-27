@@ -11,10 +11,6 @@ import Foundation
 // MARK: - Domain
 struct Journal: Equatable {}
 
-struct Entry: Equatable {
-    var url: URL
-}
-
 // MARK: - Shared
 extension PersistenceReaderKey where Self == PersistenceKeyDefault<InMemoryKey<Journal?>> {
     static var journal: Self {
